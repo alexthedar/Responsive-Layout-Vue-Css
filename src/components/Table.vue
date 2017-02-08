@@ -4,9 +4,9 @@
       <thead>
         <tr>
           <th><i></i></th>
-          <th><abbr title="Name">Name</abbr></th>
-          <th><abbr title="Size">Size</abbr></th>
-          <th><abbr title="Date">Date</abbr></th>
+          <th class="test"><abbr title="Name">Name<i class="fa fa-caret-up"></i></abbr></th>
+          <th><abbr title="Size">Size<i class="fa fa-caret-down"></i></abbr></th>
+          <th><abbr title="Date">Date<i class="fa fa-caret-down"></i></abbr></th>
           <th><i></i></th>
         </tr>
       </thead>
@@ -16,42 +16,42 @@
           <td>Folder Name</td>
           <td class="size"><small>128kb</small></td>
           <td>04-14-2016</td>
-          <td><i class="fa fa-ellipsis-v"></i></td>
+          <td><a><i class="fa fa-ellipsis-v"></i></a></td>
         </tr>
         <tr>
           <th><i class="fa fa-folder-o"></i></th>
           <td>Folder Name</td>
           <td class="size"><small>2.56mb</small></td>
           <td>04-14-2016</td>
-          <td><i class="fa fa-ellipsis-v"></i></td>
+          <td><a><i class="fa fa-ellipsis-v"></i></a></td>
         </tr>
         <tr>
           <th><i class="fa fa-folder-o"></i></th>
           <td>Folder Name</td>
           <td class="size"><small>128kb</small></td>
           <td>04-14-2016</td>
-          <td><i class="fa fa-ellipsis-v"></i></td>
+          <td><a><i class="fa fa-ellipsis-v"></i></a></td>
         </tr>
         <tr>
           <th><i class="fa fa-folder-o"></i></th>
           <td>Folder Name</td>
           <td class="size"><small>2.56mb</small></td>
           <td>04-14-2016</td>
-          <td><i class="fa fa-ellipsis-v"></i></td>
+          <td><a><i class="fa fa-ellipsis-v"></i></a></td>
         </tr>
         <tr>
           <th><i class="fa fa-file-word-o"></i></th>
           <td>File Name</td>
           <td class="size"><small>128kb</small></td>
           <td>04-14-2016</td>
-          <td><i class="fa fa-ellipsis-v"></i></td>
+          <td><a><i class="fa fa-ellipsis-v"></i></a></td>
         </tr>
         <tr>
           <th><i class="fa fa-file-word-o"></i></th>
           <td>File Name</td>
           <td class="size"><small>128kb</small></td>
           <td>04-14-2016</td>
-          <td><i class="fa fa-ellipsis-v"></i></td>
+          <td><a><i class="fa fa-ellipsis-v"></i></a></td>
         </tr>
         <tr>
           <th>
@@ -62,28 +62,28 @@
           <td>File Name</td>
           <td class="size"><small>2.56mb</small></td>
           <td>04-14-2016</td>
-          <td><i class="fa fa-ellipsis-v"></i></td>
+          <td><a><i class="fa fa-ellipsis-v"></i></a></td>
         </tr>
         <tr>
           <th><i class="fa fa-file-archive-o"></i></th>
           <td>File Name</td>
           <td class="size"><small>128kb</small></td>
           <td>04-14-2016</td>
-          <td><i class="fa fa-ellipsis-v"></i></td>
+          <td><a><i class="fa fa-ellipsis-v"></i></a></td>
         </tr>
         <tr>
           <th><i class="fa fa-file-word-o"></i></th>
           <td>File Name</td>
           <td class="size"><small>128kb</small></td>
           <td>04-14-2016</td>
-          <td><i class="fa fa-ellipsis-v"></i></td>
+          <td><a><i class="fa fa-ellipsis-v"></i></a></td>
         </tr>
         <tr>
           <th><i class="fa fa-file-word-o"></i></th>
           <td>File Name</td>
           <td class="size"><small>128kb</small></td>
           <td>04-14-2016</td>
-          <td><i class="fa fa-ellipsis-v"></i></td>
+          <td><a><i class="fa fa-ellipsis-v"></i></a></td>
         </tr>
         <tr>
           <th>
@@ -94,14 +94,14 @@
           <td>File Name</td>
           <td class="size"><small>2.56mb</small></td>
           <td>04-14-2016</td>
-          <td><i class="fa fa-ellipsis-v"></i></td>
+          <td><a><i class="fa fa-ellipsis-v"></i></a></td>
         </tr>
         <tr>
           <th><i class="fa fa-file-archive-o"></i></th>
           <td>File Name</td>
           <td class="size"><small>128kb</small></td>
           <td>04-14-2016</td>
-          <td><i class="fa fa-ellipsis-v"></i></td>
+          <td><a><i class="fa fa-ellipsis-v"></i></a></td>
         </tr>
       </tbody>
     </table>
@@ -127,12 +127,16 @@ export default {
     overflow: hidden;
     border-radius: 50%;
 }
-th {
-  padding: 0;
+.test {
+  color: #000;
 }
 .fa-ellipsis-v {
   color: #A9A9A9;
 }
+.fa-ellipsis-v:hover {
+  color: #000;
+}
+
 td {
   font-weight: 500;
 }

@@ -8,9 +8,9 @@
           </p>
         </figure>
         <div class="media-content">
-          <div class="content">
-            <span class="company-name"><strong>Nike Inc.</strong></span>
-            <small class="company-email"><i>emailaddress@nike.com</i></small>
+          <div class="content company">
+            <span><strong>Nike Inc.</strong></span>
+            <small class="email"><i>emailaddress@nike.com</i></small>
           </div>
         </div>
         <div class="media-right">
@@ -27,7 +27,10 @@
         <li><a><i class="icon fa fa-file-image-o"></i><span>Photos</span></a></li>
         <li><a><i class="icon fa fa-bell-o"></i>
           <span>Notification</span>
-          <span>3</span></a>
+          <span class="fa-stack icon">
+            <i class="fa fa-circle fa-stack-2x "></i>
+            <i class="fa fa-stack-1x fa-inverse char-overlay">3</i>
+          </span></a>
         </li>
         <li><a><i class="icon fa fa-sign-out"></i><span>Sign Out</span></a></li>
       </ul>
@@ -57,10 +60,10 @@ export default {
   border-radius: 25px;
 }
 .menu-list span {
-  padding-left: 30px;
+  padding-left: 2.5em;
 }
 .menu-list .fa {
-  padding-left: 10px;
+  padding-left: .5em;
 }
 .image-cropper {
     overflow: hidden;
@@ -72,4 +75,19 @@ export default {
 .fa-cog:hover{
   color: #000;
 }
+.content {
+  padding-top: 1em;
+}
+.email {
+position: relative;
+top: -.5em;
+}
+.fa-circle {
+  color: #006400;
+}
+.char-overlay {
+  font-size: 100%;
+  font-weight: bold;
+}
+
 </style>

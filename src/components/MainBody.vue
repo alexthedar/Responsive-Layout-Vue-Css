@@ -12,9 +12,9 @@
                 <li><a class="is-active" href="#">Nike Inc.</a></li>
               </ul>
               <span class="column has-text-right ">
-                <i class="fa fa-upload"></i>
-                <i class="fa fa-plus-square"></i>
-                <i class="fa fa-trash"></i>
+                <i class="breadcrumb-icons fa fa-upload"></i>
+                <i class="breadcrumb-icons fa fa-plus-square"></i>
+                <i class="breadcrumb-icons fa fa-trash"></i>
               </span>
             </article>
           <article id="table">
@@ -60,9 +60,12 @@ export default {
 #breadcrumb-header {
   padding-top: 1em;
 }
+.breadcrumb-icons {
+  padding-left: .5em;
+}
 
 ul.breadcrumb {
-    list-style: none;
+  list-style: none;
 }
 ul.breadcrumb li {
   display: inline;
