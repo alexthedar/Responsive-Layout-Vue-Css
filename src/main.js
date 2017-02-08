@@ -5,10 +5,8 @@ import App from './App'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
 import 'bulma/css/bulma.css'
-import enquire from 'assets/js/enquire.js'
 
 Vue.use(VueMaterial)
-Vue.extend(enquire)
 
 /* eslint-disable no-new */
 new Vue({

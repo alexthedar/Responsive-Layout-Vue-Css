@@ -8,7 +8,7 @@
 <script>
 import Header from './components/Header.vue'
 import Navbar from './components/Navbar.vue'
-import Menu from './components/Menu.vue'
+import MenuView from './components/MenuView.vue'
 import MainBody from './components/MainBody.vue'
 
 export default {
@@ -53,4 +53,9 @@ export default {
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 </style>

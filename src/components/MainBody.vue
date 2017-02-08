@@ -3,7 +3,7 @@
     <div class="container is-fluid">
       <div class="columns">
         <aside class="column ">
-          <Menu></Menu>
+          <MenuView></MenuView>
         </aside>
         <section class="column is-three-quarters">
             <article id="breadcrumb-header" class="columns is-hidden-mobile">
@@ -18,7 +18,7 @@
               </span>
             </article>
           <article id="table">
-            <Table></Table>
+            <TableView></TableView>
           </article>
         </section>
       </div>
@@ -30,8 +30,8 @@
 <script>
 // import Header from './components/Header'
 // import Navbar from './components/Navbar'
-import Menu from './Menu'
-import Table from './Table'
+import MenuView from './MenuView'
+import TableView from './TableView'
 // import MainBody from './components/MainBody'
 
 
@@ -44,8 +44,8 @@ export default {
     }
   },
   components: {
-    Menu,
-    Table
+    MenuView,
+    TableView
   },
   methods: {
   },
