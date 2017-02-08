@@ -1,6 +1,7 @@
 <template>
   <div id="main-body">
-    Main
+{{windowWidth}}
+
   </div>
 </template>
 
@@ -12,10 +13,23 @@
 
 export default {
   name: 'main-body',
+  props: ['windowWidth'],
+  data (){
+    return {
+      width: 0,
+    }
+  },
   components: {
+  },
+  methods: {
+  },
+  created: function(){
+  },
+  watch: {
   }
 }
 </script>
 
 <style scoped>
+
 </style>

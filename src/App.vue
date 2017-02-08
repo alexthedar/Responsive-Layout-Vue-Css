@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Navbar></Navbar>
-    <MainBody></MainBody>
+    <Navbar v-bind:windowWidth="windowWidth"></Navbar>
+    <MainBody v-bind:windowWidth="windowWidth"></MainBody>
   </div>
 </template>
 
@@ -16,6 +16,38 @@ export default {
   components: {
     Navbar,
     MainBody
+  },
+  data: function() {
+    return {
+      windowWidth: 0,
+      windowHeight: 0,
+    }
+  },
+
+  mounted() {
+    this.$nextTick(function() {
+      window.addEventListener('resize', this.getWindowWidth);
+      window.addEventListener('resize', this.getWindowHeight);
+
+      //Init
+      this.getWindowWidth()
+      this.getWindowHeight()
+    })
+
+  },
+
+  methods: {
+    getWindowWidth(event) {
+        this.windowWidth = document.documentElement.clientWidth;
+      },
+
+      getWindowHeight(event) {
+        this.windowHeight = document.documentElement.clientHeight;
+      }
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.getWindowWidth);
+    window.removeEventListener('resize', this.getWindowHeight);
   }
 }
 </script>
