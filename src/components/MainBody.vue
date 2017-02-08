@@ -1,12 +1,12 @@
 <template>
   <div id="main-body">
     <div class="container is-fluid">
-      <div class="columns is-gapless">
-        <aside class="column tempcolor">
+      <div class="columns">
+        <aside class="column ">
           <Menu></Menu>
         </aside>
         <section class="column is-three-quarters">
-            <article class="columns is-paddingless is-marginless is-hidden-mobile">
+            <article id="breadcrumb-header" class="columns is-hidden-mobile">
               <ul class="breadcrumb column ">
                 <li><a href="#">BOX</a></li>
                 <li><a class="is-active" href="#">Nike Inc.</a></li>
@@ -17,10 +17,8 @@
                 <i class="fa fa-trash"></i>
               </span>
             </article>
-          <article>
-            <p class="notification is-info">
-              <code class="html">is-three-quarters</code>
-            </p>
+          <article id="table">
+            <Table></Table>
           </article>
         </section>
       </div>
@@ -33,6 +31,7 @@
 // import Header from './components/Header'
 // import Navbar from './components/Navbar'
 import Menu from './Menu'
+import Table from './Table'
 // import MainBody from './components/MainBody'
 
 
@@ -45,7 +44,8 @@ export default {
     }
   },
   components: {
-    Menu
+    Menu,
+    Table
   },
   methods: {
   },
@@ -57,6 +57,10 @@ export default {
 </script>
 
 <style scoped>
+#breadcrumb-header {
+  padding-top: 1em;
+}
+
 ul.breadcrumb {
     list-style: none;
 }

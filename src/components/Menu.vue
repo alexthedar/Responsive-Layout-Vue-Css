@@ -1,18 +1,37 @@
 <template>
   <div id="menu">
-    <div class="container">
-          <nav class="menu">
-            <span class="nav-item is-fullwidth">
-              <i class="fa fa-clock-o"></i><a>Recent</a>
-            </span>
-            <a>Files</a>
-            <a>Folders</a>
-            <a>Photos</a>
-            <a>Notification</a>
-            <a>Sign Out</a>
-          </nav>
-
-    </div>
+    <aside class="menu">
+      <article class="media">
+        <figure class="media-left">
+          <p class="image is-64x64 image-cropper">
+            <img src="http://lorempixel.com/250/250/people/" class="rounded"/>
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <span class="company-name"><strong>Nike Inc.</strong></span>
+            <small class="company-email"><i>emailaddress@nike.com</i></small>
+          </div>
+        </div>
+        <div class="media-right">
+          <a>
+            <i class="fa fa-cog"></i>
+          </a>
+        </div>
+      </article>
+      <hr />
+      <ul class="menu-list">
+        <li><a><i class="icon fa fa-clock-o"></i><span>Recent</span></a></li>
+        <li><a><i class="icon fa fa-file-o"></i><span>Files</span></a></li>
+        <li><a><i class="icon fa fa-folder"></i><span>Folders</span></a></li>
+        <li><a><i class="icon fa fa-file-image-o"></i><span>Photos</span></a></li>
+        <li><a><i class="icon fa fa-bell-o"></i>
+          <span>Notification</span>
+          <span>3</span></a>
+        </li>
+        <li><a><i class="icon fa fa-sign-out"></i><span>Sign Out</span></a></li>
+      </ul>
+    </aside>
   </div>
 </template>
 
@@ -31,18 +50,26 @@ export default {
 </script>
 
 <style scoped>
-body {
-  background: white;
+.media {
+  padding-top: .5em;
 }
-a.menu-block:hover {
-  background: #f5f7fa;
+.menu-list a:hover {
+  border-radius: 25px;
 }
-
-a.menu-block.is-active {
-  background: #f5f7fa;
-  color: #42afe3;
-  i.fa {
-    color: #42afe3;
-  }
+.menu-list span {
+  padding-left: 30px;
+}
+.menu-list .fa {
+  padding-left: 10px;
+}
+.image-cropper {
+    overflow: hidden;
+    border-radius: 50%;
+}
+.fa-cog{
+  color: #ccc;
+}
+.fa-cog:hover{
+  color: #000;
 }
 </style>
