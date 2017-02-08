@@ -1,40 +1,29 @@
 <template>
   <div id="navbar">
-
-
-
-    <!--  -->
-
     <nav class="nav">
       <div class="nav-left">
-        <a class="nav-item is-brand" href="#">
+        <a class="nav-item is-brand " href="#">
           <img src="../assets/icons/box.png" alt="Platt logo">
           Platt Box
         </a>
       </div>
 
       <div class="nav-center">
-        <span class="nav-toggle icon nav-item is-mobile-only">
-          <i class="fa fa-search"></i>
-        </span>
       </div>
 
       <!-- Using a <label /> here -->
-      <label class="nav-toggle" for="nav-toggle-state">
+      <label class="nav-toggle" >
         <span></span>
         <span></span>
         <span></span>
       </label>
 
 
-      <!-- This checkbox is hidden -->
-      <input type="checkbox" id="nav-toggle-state" />
-
       <div class="nav-right nav-menu">
-        <span class="nav-item is-flex-tablet">
+        <span class="nav-item is-flex-tablet search" >
           <p class="control has-icon has-icon-right">
             <input class="input " placeholder="Search Customers">
-            <span class="icon">
+            <span class="icon ">
               <i class="fa fa-search"></i>
             </span>
           </p>
@@ -56,13 +45,12 @@ export default {
   data (){
     return {
       width: 0,
-      searchPlaceholder:''
+      seen: false
     }
   },
   components: {
   },
   methods: {
-
   },
   created: function(){
   },
@@ -73,11 +61,12 @@ export default {
 </script>
 
 <style scoped>
+
 #nav-toggle-state {
   display: none;
 }
 
-#nav-toggle-state:checked ~ .nav-menu {
+#nav-toggle-state:checked  .search {
   display: block;
 }
 </style>
