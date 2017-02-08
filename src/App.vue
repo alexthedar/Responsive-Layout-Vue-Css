@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" >
     <Navbar v-bind:windowWidth="windowWidth"></Navbar>
     <MainBody v-bind:windowWidth="windowWidth"></MainBody>
   </div>

@@ -1,7 +1,21 @@
 <template>
   <div id="main-body">
-{{windowWidth}}
+    <div class="container is-fluid">
+      <div class="columns is-gapless">
+        <section>
+          <aside class="column">
+            <p class="notification is-warning">{{windowWidth}}</p>
 
+          </aside>
+        </section>
+        <section class="column is-three-quarters">
+
+          <p class="notification is-info">
+            <code class="html">is-three-quarters</code>
+          </p>
+        </section>
+      </div>
+    </div>
   </div>
 </template>
 
