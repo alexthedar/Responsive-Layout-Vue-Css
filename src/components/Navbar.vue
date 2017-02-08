@@ -19,9 +19,9 @@
         </label>
 
         <div class="nav-right nav-menu" id="menu">
-          <span class="nav-item is-flex-tablet " >
-            <p class="control has-icon has-icon-right">
-              <input class="input is-large search" placeholder="Search Customers">
+          <span class="nav-item is-flex-tablet is-marginless is-paddingless" >
+            <p class="control has-icon has-icon-right is-marginless is-paddingless">
+              <input class="input is-large search is-marginless " placeholder="Search Customers">
               <span class="icon ">
                 <i class="fa fa-search"></i>
               </span>

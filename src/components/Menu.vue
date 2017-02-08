@@ -1,6 +1,18 @@
 <template>
   <div id="menu">
-    Menu
+    <div class="container">
+          <nav class="menu">
+            <span class="nav-item is-fullwidth">
+              <i class="fa fa-clock-o"></i><a>Recent</a>
+            </span>
+            <a>Files</a>
+            <a>Folders</a>
+            <a>Photos</a>
+            <a>Notification</a>
+            <a>Sign Out</a>
+          </nav>
+
+    </div>
   </div>
 </template>
 
@@ -20,36 +32,17 @@ export default {
 
 <style scoped>
 body {
-  width: 100%;
-  height: 100%;
+  background: white;
+}
+a.menu-block:hover {
+  background: #f5f7fa;
 }
 
-.slideout-menu {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 0;
-  width: 256px;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  display: none;
-}
-
-.slideout-panel {
-  position: relative;
-  z-index: 1;
-  will-change: transform;
-}
-
-.slideout-open,
-.slideout-open body,
-.slideout-open .slideout-panel {
-  overflow: hidden;
-}
-
-.slideout-open .slideout-menu {
-  display: block;
+a.menu-block.is-active {
+  background: #f5f7fa;
+  color: #42afe3;
+  i.fa {
+    color: #42afe3;
+  }
 }
 </style>
