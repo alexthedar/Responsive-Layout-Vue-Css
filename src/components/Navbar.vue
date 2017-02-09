@@ -9,9 +9,6 @@
           </a>
         </div>
 
-        <div class="nav-center">
-        </div>
-
         <label class="nav-toggle" >
           <span></span>
           <span></span>
@@ -61,6 +58,9 @@ export default {
 </script>
 
 <style scoped>
+.nav-toggle{
+  color: white;
+}
 .nav, .search {
   background-color: #006400;
 }
@@ -69,7 +69,7 @@ export default {
   box-shadow: 1px 1px 5px #555 inset;
   background-color: #015b01;
 }
-.logo, .fa-search{
+.logo, .fa-search {
   color: #fff;
   font-weight: 500;
 }
