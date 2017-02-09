@@ -18,7 +18,7 @@
               </span>
             </article>
           <article id="table">
-            <TableView></TableView>
+            <TableView v-bind:windowWidth="windowWidth"></TableView>
           </article>
         </section>
       </div>

@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in data">
+        <tr v-for="(item, index) in data">
           <td>
             <span v-if="item.type==='folder'">
               <i class="fa fa-folder-o"></i>
@@ -32,47 +32,58 @@
           <td>{{item.name}}</td>
           <td class="size"><small>{{item.size}}</small></td>
           <td>{{getDate(item.date)}}</td>
-          <td><i class="fa fa-ellipsis-v"></i></td>
+          <td :index="index" @click="showFileMenu(index)" ><i  class="fa fa-ellipsis-v"></i>
+            <div v-if="show === parseInt(index)" class='file-menu'>
+              <div class="menu">
+                <ul class="menu-list">
+                  <li><a>Rename</a></li>
+                  <li><a>Move</a></li>
+                  <li><a>Copy</a></li>
+                  <li><a>Comment</a></li>
+                  <li><a>Attach to Customer</a></li>
+                  <li><a>Delete</a></li>
+                </ul>
+              </div>
+            </div>
+          </td>
         </tr>
 
   </div>
 
 </template>
 
-<script type="text/x-template" id="file-menu">
-  <div>
-    file
-  </div>
-</script>
-
 <script>
 import data from '../assets/json/data.json'
 import moment from 'moment'
-// import Menu from './components/Menu'
+import FileMenu from './FileMenu'
 // import MainBody from './components/MainBody'
 
 
 export default {
   name: 'table',
+  props: ['windowWidth'],
   components: {
+    FileMenu
   },
   data() {
     return {
-      data
+      data,
+      show: '',
+      selected: 'Home',
     }
   },
   methods: {
-    show (){
-      console.log(this.data)
-    },
     getDate (date){
       return moment.utc(date).format('MM-DD-YYYY')
+    },
+    showFileMenu(index){
+      this.show === index? this.show = '' : this.show = index;
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
 .image-cropper {
     overflow: hidden;
     border-radius: 50%;
@@ -91,27 +102,11 @@ td {
   color: #A9A9A9;
 }
 .file-menu {
-    position: relative;
-    display: inline-block;
+  position: absolute;
+  background: #fff;
+  right: 20px;
+  border: 1px solid #000;
+  width: 15em;
+  z-index: 1000;
 }
-input[type='checkbox'] {
-visibility: hidden
-}
-input[type='checkbox']:checked ~ .toggled
-{
-    visibility: hidden;
-}
-
-input[type='checkbox'] ~ .toggled
-{
-    visibility: visible;
-}
-.toggled:focus .toggled {
-    display: block;
-}
-.toggled {
-    position: absolute;
-    z-index: 1;
-}
-
 </style>
