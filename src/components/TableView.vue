@@ -32,44 +32,51 @@
           <td>{{item.name}}</td>
           <td class="size"><small>{{item.size}}</small></td>
           <td>{{getDate(item.date)}}</td>
+
+          <!-- File Menu via ellipses -->
           <td :index="index" @click="showFileMenu(index)" ><i  class="fa fa-ellipsis-v"></i>
             <div v-if="show === parseInt(index)" class='file-menu'>
               <div class="menu">
                 <ul class="menu-list">
+<!-- TODO: Make Modal dynamic and respond to individual links -->
                   <li @click="showModal"><a >Rename</a></li>
-                  <li><a>Move</a></li>
-                  <li><a>Copy</a></li>
-                  <li><a>Comment</a></li>
-                  <li><a>Attach to Customer</a></li>
-                  <li><a>Delete</a></li>
+                  <li @click="showModal"><a>Move</a></li>
+                  <li @click="showModal"><a>Copy</a></li>
+                  <li @click="showModal"><a>Comment</a></li>
+                  <li @click="showModal"><a>Attach to Customer</a></li>
+                  <li @click="showModal"><a>Delete</a></li>
                 </ul>
               </div>
             </div>
           </td>
         </tr>
       </tbody>
-      <div class="modal " v-bind:class="{'is-active': isActive }">
-        <div class="modal-background" @click="showModal"></div>
-        <div class="modal-content modal-input">
-          <div class="card">
-            <header class="card-header ">
-              <p class=" card-header-title">Rename Folder</p>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                <p class="control">
-                  <input class="input is-large" type="text" placeholder="Name">
-                </p>
-              </div>
+    </table>
+    
+    <!-- File Menu Modal Overlay -->
+    <div class="modal " v-bind:class="{'is-active': isActive }">
+      <div class="modal-background" @click="showModal"></div>
+      <div class="modal-content modal-input">
+        <div class="card">
+          <header class="card-header ">
+            <p class=" card-header-title">Rename Folder</p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p class="control">
+                <input class="input is-large" type="text" placeholder="Name">
+              </p>
             </div>
-            <footer class="card-footer">
-              <a class="is-success card-footer-item">CANCEL</a>
-              <a class="card-footer-item">RENAME</a>
-            </footer>
-            <button class="modal-close" @click="showModal"></button>
           </div>
+          <footer class="card-footer">
+            <a class="is-success card-footer-item">CANCEL</a>
+            <a class="card-footer-item">RENAME</a>
+          </footer>
+          <button class="modal-close" @click="showModal"></button>
         </div>
       </div>
+    </div>
+
   </div>
 </template>
 
@@ -86,7 +93,8 @@ export default {
     return {
       data,
       show: '',
-      isActive: false
+      isActive: false,
+      isMobile: false
     }
   },
   methods: {
@@ -99,8 +107,22 @@ export default {
     showModal(){
       console.log(this.isActive)
       this.isActive = !this.isActive
+    },
+    screenIsMobile (windowWidth){
+      if(windowWidth < 768 ){
+        this.isMobile = true
+      } else {
+        this.isMobile = false
+      }
     }
-
+  },
+  created: function(){
+    this.screenIsMobile(this.windowWidth);
+  },
+  watch: {
+    windowWidth: function(val){
+      this.screenIsMobile(val);
+    }
   }
 }
 </script>

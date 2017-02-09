@@ -17,11 +17,11 @@
 
       <div class="columns">
         <aside  class="column ">
-          <MenuView v-if="windowWidth > 768" ></MenuView>
+          <MenuView v-if="isMobile==false" ></MenuView>
         </aside>
         <section class="column is-three-quarters">
             <article id="breadcrumb-header" class="columns ">
-              <ul class="breadcrumb column ">
+              <ul :class="{'mobile-breadcrumb-adjust': isMobile }" class="breadcrumb column ">
                 <li><a href="#">BOX</a></li>
                 <li><a class="is-active" href="#">Nike Inc.</a></li>
 <!-- TODO: Make green circle larger than number -->
@@ -63,6 +63,7 @@ export default {
   data (){
     return {
       width: 0,
+      isMobile: false
     }
   },
   components: {
@@ -70,10 +71,21 @@ export default {
     TableView
   },
   methods: {
+    screenIsMobile (windowWidth){
+      if(windowWidth < 768 ){
+        this.isMobile = true
+      } else {
+        this.isMobile = false
+      }
+    }
   },
   created: function(){
+    this.screenIsMobile(this.windowWidth);
   },
   watch: {
+    windowWidth: function(val){
+      this.screenIsMobile(val);
+    }
   }
 }
 </script>
@@ -82,6 +94,13 @@ export default {
 #breadcrumb-header {
   padding-top: 1em;
 }
+.mobile-breadcrumb-adjust {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
 .breadcrumb-icons {
   padding-left: .5em;
 }
