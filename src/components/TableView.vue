@@ -1,10 +1,10 @@
 <template>
   <div id="table" >
-    <div class="facebook"> Facebook Content</div>
     <table class="table">
       <thead>
         <tr>
           <th></th>
+<!-- TODO: Make carets flip and click sorts table -->
           <th ><abbr title="Name">Name<i class="fa fa-caret-up"></i></abbr></th>
           <th><abbr title="Size">Size<i class="fa fa-caret-down"></i></abbr></th>
           <th><abbr title="Date">Date<i class="fa fa-caret-down"></i></abbr></th>

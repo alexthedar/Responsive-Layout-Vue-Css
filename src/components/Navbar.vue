@@ -9,11 +9,17 @@
           </a>
         </div>
 
-        <label class="nav-toggle" >
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
+
+        <div class="nav-item is-hidden-tablet" >
+          <span class="icon ">
+            <i class="fa fa-search"></i>
+          </span>
+        </div>
+        <div class="nav-item is-hidden-tablet" >
+          <span class="icon ">
+            <i class="fa fa-bars"></i>
+          </span>
+        </div>
 
         <div class="nav-right nav-menu" id="menu">
           <span class="nav-item is-flex-tablet is-marginless is-paddingless" >
@@ -69,8 +75,9 @@ export default {
   box-shadow: 1px 1px 5px #555 inset;
   background-color: #015b01;
 }
-.logo, .fa-search {
+.logo, .fa-search, .fa-bars {
   color: #fff;
   font-weight: 500;
 }
+
 </style>
