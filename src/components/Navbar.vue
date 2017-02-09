@@ -73,7 +73,6 @@ export default {
       console.log('here')
     },
     showMenu(){
-      console.log(this.isActive)
       this.isActive = !this.isActive
     }
   }
