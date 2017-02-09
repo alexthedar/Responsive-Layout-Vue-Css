@@ -1,19 +1,25 @@
 <template>
+
   <div id="table" >
-    <table class="table">
-      <thead>
-        <tr>
-          <th></th>
-<!-- TODO: Make carets flip and click sorts table -->
-          <th ><abbr title="Name">Name<i class="fa fa-caret-up"></i></abbr></th>
-          <th><abbr title="Size">Size<i class="fa fa-caret-down"></i></abbr></th>
-          <th><abbr title="Date">Date<i class="fa fa-caret-down"></i></abbr></th>
-          <th></th>
-        </tr>
-      </thead>
+    <div v-if="isMobile" id="mobile-search">
+      <p class="control has-icon has-icon-right">
+        <input class="input is-medium" type="text" placeholder="Looking For">
+        <span class="icon is-medium">
+          <i class="fa fa-search"></i>
+        </span>
+      </p>
+    </div>
+    <div v-if="isMobile" class="tabs is-centered ">
+      <ul @click="tabClicked">
+        <li><a :id="1">Name</a></li>
+        <li><a :id="2">Size</a></li>
+        <li><a :id="3">Date</a></li>
+      </ul>
+    </div>
+    <table class="table ">
       <tbody>
         <tr v-for="(item, index) in data">
-          <td>
+          <td >
             <span v-if="item.type==='folder'">
               <i class="fa fa-folder-o"></i>
             </span>
@@ -29,15 +35,15 @@
               </figure>
             </span>
           </td>
-          <td>{{item.name}}</td>
-          <td class="size"><small>{{item.size}}</small></td>
-          <td>{{getDate(item.date)}}</td>
+          <td class="has-text-left">{{item.name}}</td>
+          <td v-if="parseInt(activeTab) === 2" class="size"><small>{{item.size}}</small></td>
+          <td v-if="parseInt(activeTab) === 3">{{getDate(item.date)}}</td>
 
           <!-- File Menu via ellipses -->
-          <td :index="index" @click="showFileMenu(index)" ><i  class="fa fa-ellipsis-v"></i>
-            <div v-if="show === parseInt(index)" class='file-menu'>
+          <td :index="index" @click="showFileMenu(index)" ><i  class=" fa fa-ellipsis-v" ></i>
+            <div v-if="show === index" class=''>
               <div class="menu">
-                <ul class="menu-list">
+                <ul v-if="!isMobile" class="file-menu is-overlay menu-list">
 <!-- TODO: Make Modal dynamic and respond to individual links -->
                   <li @click="showModal"><a >Rename</a></li>
                   <li @click="showModal"><a>Move</a></li>
@@ -46,13 +52,37 @@
                   <li @click="showModal"><a>Attach to Customer</a></li>
                   <li @click="showModal"><a>Delete</a></li>
                 </ul>
+<!-- TODO: Temp to disable modal on mobile -->
+                <ul v-else-if="isMobile" class="menu-list file-menu-mobile">
+                  <li>
+                    <span class="icon is-medium">
+                      <i class="fa fa-file-word-o"></i>
+                    </span>
+                    <div>
+                      File Name.doc
+                    </div>
+                    <div>
+                      <small>
+                        box/customername/
+                      </small>
+                    </div>
+
+                  </li>
+                  <li><a>Rename</a></li>
+                  <li><a>Move</a></li>
+                  <li><a>Copy</a></li>
+                  <li><a>Comment</a></li>
+                  <li><a>Attach to Customer</a></li>
+                  <li><a>Delete</a></li>
+                </ul>
               </div>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
-    
+
+
     <!-- File Menu Modal Overlay -->
     <div class="modal " v-bind:class="{'is-active': isActive }">
       <div class="modal-background" @click="showModal"></div>
@@ -94,7 +124,8 @@ export default {
       data,
       show: '',
       isActive: false,
-      isMobile: false
+      isMobile: false,
+      activeTab: '1'
     }
   },
   methods: {
@@ -114,6 +145,9 @@ export default {
       } else {
         this.isMobile = false
       }
+    },
+    tabClicked(e){
+      this.activeTab = e.target.id
     }
   },
   created: function(){
@@ -128,6 +162,14 @@ export default {
 </script>
 
 <style scoped>
+#mobile-search input {
+-webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px;
+}
+#mobile-search{
+  padding: 1em;
+}
 .image-cropper {
     overflow: hidden;
     border-radius: 50%;
@@ -142,20 +184,40 @@ export default {
 td {
   font-weight: 500;
 }
+
+tr:hover {
+  background-color: blue;
+}
 .size {
   color: #A9A9A9;
 }
+
 .file-menu {
   position: absolute;
   background: #fff;
-  right: 20px;
+  right: 10%;;
   border: 1px solid #000;
   width: 15em;
-  z-index: 1000;
 }
 .modal-input {
   background: #f5f5f5;
   width: 30%;
+}
+.file-menu-mobile {
+  border-top: 1px solid green;
+  border-bottom: 1px solid green;
+  box-shadow: 0 2px 10px 5px #ccc;
+  line-height: 2em;
+  position: absolute;
+  background: #f5f5f5;
+  width: 100%;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.file-menu-mobile li {
+  border-bottom: 1px solid #ccc;
 }
 
 </style>
