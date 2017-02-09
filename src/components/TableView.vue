@@ -49,6 +49,7 @@
         </tr>
       </tbody>
       <div class="modal " v-bind:class="{'is-active': isActive }">
+        <div class="modal-background" @click="showModal"></div>
         <div class="modal-content modal-input">
           <div class="card">
             <header class="card-header ">
@@ -131,13 +132,8 @@ td {
   z-index: 1000;
 }
 .modal-input {
-  box-shadow: 1px 1px 10px 2px #ccc;
-  background: #fff;
+  background: #f5f5f5;
   width: 30%;
 }
-.modal-close {
-  background-color: gray;
-  top: 20%;
-  left: 65%;
-}
+
 </style>
