@@ -1,6 +1,7 @@
 <template>
   <div>
   <!-- TODO: place mobile and desktop table into separate components or find a nicer way to make this mobile freindly -->
+  <!-- TODO: Either use isMobile functions globally or use css framework to be consistant  -->
 
   <!-- Desktop Table -->
   <table v-if="!isMobile" class="table">

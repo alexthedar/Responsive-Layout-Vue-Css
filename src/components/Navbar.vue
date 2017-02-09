@@ -1,4 +1,6 @@
 <template>
+  <!-- TODO: Either use isMobile functions globally or use css framework to be consistant  -->
+
   <div id="navbar" >
     <nav class="nav">
       <div class="container is-fluid">
@@ -9,20 +11,21 @@
           </a>
         </div>
 
-
+        <!--  Mobile Right Navbar Icons-->
         <div class="nav-item is-hidden-tablet" >
           <span class="icon ">
             <i class="fa fa-search"></i>
           </span>
         </div>
         <div class="nav-item is-hidden-tablet" >
-          <span class="icon ">
+          <span @click="showMenu" class="icon ">
             <i class="fa fa-bars"></i>
           </span>
         </div>
 
-        <div class="nav-right nav-menu" id="menu">
-          <span class="nav-item is-flex-tablet is-marginless is-paddingless" >
+        <!-- Desktop Search Navbr -->
+        <div class="is-flex-tablet nav-right nav-menu" id="menu">
+          <span class="nav-item  is-marginless is-paddingless" >
             <p class="control has-icon has-icon-right is-marginless is-paddingless">
               <input class="input is-large search is-marginless " placeholder="Search Customers">
               <span class="icon ">
@@ -36,10 +39,6 @@
 </template>
 
 <script>
-// import Header from './components/Header'
-// import Navbar from './components/Navbar'
-// import Menu from './components/Menu'
-// import MainBody from './components/MainBody'
 
 
 export default {

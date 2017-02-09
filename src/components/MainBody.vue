@@ -1,4 +1,6 @@
 <template>
+  <!-- TODO: Either use isMobile functions globally or use css framework to be consistant  -->
+
   <div id="main-body">
     <div class="container is-fluid">
 
