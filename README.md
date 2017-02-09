@@ -18,11 +18,20 @@ npm run build
 npm run build --report
 ```
 
-Built using:
-vue-cli webpack template
-bulma CSS
-vue-material
-font-awesome
+### Notes & Todo:
+Is working to most specifications. Most of app is static and not dynamic.  Used bulma for simplicity but I think it might be better to use bootstrap or bourbon.
+- TODO: Implement vue-router and axios for routing and http calls
+- TODO: Refactor commonly called functions and common css to global.
+- TODO: Use sass instead of straight css.  Webpack would not recognize sass and in interest of time built in css for now.
+
+
+
+#### Built using:
+- vue-cli webpack template
+- bulma CSS
+- font-awesome
+- normalize.css
+- moment.js
 
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
