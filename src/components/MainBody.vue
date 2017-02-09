@@ -4,7 +4,8 @@
   <div id="main-body">
     <div class="container is-fluid">
 
-      <section class="hero is-dark is-hidden-tablet">
+      <!-- Mobile Hero Header -->
+      <section v-if="isMobile" class="hero is-dark is-hidden-tablet">
         <div class="hero-body">
           <div class="container has-text-centered">
             <figure class="image image-cropper is-128x128">
@@ -16,34 +17,40 @@
           </div>
         </div>
       </section>
-
+<!-- TODO: separate breadcrumbs and Menu (dekstop and mobile) into own component -->
       <div class="columns">
+        <!-- Desktop Menu -->
         <aside  class="column ">
           <MenuView v-if="isMobile==false" ></MenuView>
         </aside>
+
+        <!-- Desktop Breadcrumbs -->
         <section class="column is-three-quarters">
-            <article id="breadcrumb-header" class="columns ">
-              <ul :class="{'mobile-breadcrumb-adjust': isMobile }" class="breadcrumb column ">
-                <li><a href="#">BOX</a></li>
-                <li><a class="is-active" href="#">Nike Inc.</a></li>
+          <article id="breadcrumb-header" class="columns ">
+            <ul :class="{'mobile-breadcrumb-adjust': isMobile }" class="breadcrumb column ">
+              <li><a href="#">BOX</a></li>
+              <li><a class="is-active" href="#">Nike Inc.</a></li>
 <!-- TODO: Make green circle larger than number -->
-                <span class="is-pulled-right has-text-right is-hidden-tablet">
-                  <span id="notification-mobile" class="fa-stack icon">
-                    <i class="testy fa fa-circle fa-stack-2x "></i>
-                    <i class="fa fa-stack-1x fa-inverse char-overlay">3</i>
-                  </span>
-                  <i class="icon fa fa-bell-o"></i>
+              <span class="is-pulled-right has-text-right is-hidden-tablet">
+                <span id="notification-mobile" class="fa-stack icon">
+                  <i class="testy fa fa-circle fa-stack-2x "></i>
+                  <i class="fa fa-stack-1x fa-inverse char-overlay">3</i>
                 </span>
-              </ul>
-              <span class="column has-text-right is-hidden-mobile">
-                <i class="breadcrumb-icons fa fa-upload"></i>
-                <i class="breadcrumb-icons fa fa-plus-square"></i>
-                <i class="breadcrumb-icons fa fa-trash"></i>
+                <i class="icon fa fa-bell-o"></i>
               </span>
-            </article>
-          <article id="table">
-            <TableView v-bind:windowWidth="windowWidth"></TableView>
+            </ul>
+            <span class="column has-text-right is-hidden-mobile">
+              <i class="breadcrumb-icons fa fa-upload"></i>
+              <i class="breadcrumb-icons fa fa-plus-square"></i>
+              <i class="breadcrumb-icons fa fa-trash"></i>
+            </span>
           </article>
+
+          <!-- Mobile & Desktop Tables -->
+          <div >
+            <TableView  v-bind:windowWidth="windowWidth"></TableView>
+          </div>
+
         </section>
       </div>
     </div>
@@ -52,12 +59,8 @@
 </template>
 
 <script>
-// import Header from './components/Header'
-// import Navbar from './components/Navbar'
 import MenuView from './MenuView'
 import TableView from './TableView'
-// import MainBody from './components/MainBody'
-
 
 export default {
   name: 'main-body',
@@ -135,9 +138,13 @@ ul.breadcrumb li a.is-active:after {
   margin: 0 auto;
   border: 3px solid #fff
 }
+.hero {
+  z-index: 1;
+}
 .hero-body {
   margin: 1em;
   padding: 0;
+
 }
 .image-cropper {
     overflow: hidden;
@@ -154,4 +161,6 @@ ul.breadcrumb li a.is-active:after {
   bottom: .5em;
   left: .5em;
 }
+
+
 </style>

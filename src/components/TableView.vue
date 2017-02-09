@@ -126,7 +126,7 @@
     <!-- End Mobile Table -->
 
     <!-- File Menu Modal Overlay -->
-    <div class="modal " v-bind:class="{'is-active': isActive }">
+    <div class="modal " v-if="isActive" v-bind:class="{'is-active': isActive }">
       <div class="modal-background" @click="showModal"></div>
       <div class="modal-content modal-input">
         <div class="card">
@@ -203,9 +203,9 @@ export default {
 
 <style scoped>
 #mobile-search input {
--webkit-border-radius: 50px;
--moz-border-radius: 50px;
-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
 }
 #mobile-search{
   padding: 1em;

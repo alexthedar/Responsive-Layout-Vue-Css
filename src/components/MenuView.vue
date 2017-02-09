@@ -3,6 +3,8 @@
 
   <div id="menu">
     <aside class="menu">
+
+
       <article class="media">
         <figure class="media-left">
           <p class="image is-64x64 image-cropper">
@@ -12,7 +14,7 @@
         <div class="media-content">
           <div class="content company">
             <span><strong>Nike Inc.</strong></span>
-            <small class="email"><i>emailaddress@nike.com</i></small>
+            <p><small class="email"><i>emailaddress@nike.com</i></small></p>
           </div>
         </div>
         <div class="media-right">
@@ -41,15 +43,30 @@
 </template>
 
 <script>
-// import Header from './components/Header'
-// import Navbar from './components/Navbar'
-// import Menu from './components/Menu'
-// import MainBody from './components/MainBody'
-
-
 export default {
   name: 'menu',
-  components: {
+  props: ['windowWidth'],
+  data() {
+    return {
+      isMobile: false,
+    }
+  },
+  methods: {
+    screenIsMobile (windowWidth){
+      if(windowWidth < 768 ){
+        this.isMobile = true
+      } else {
+        this.isMobile = false
+      }
+    }
+  },
+  created: function(){
+    this.screenIsMobile(this.windowWidth);
+  },
+  watch: {
+    windowWidth: function(val){
+      this.screenIsMobile(val);
+    }
   }
 }
 </script>

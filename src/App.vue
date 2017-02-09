@@ -1,14 +1,13 @@
 <template>
   <div id="app" >
+
     <Navbar v-bind:windowWidth="windowWidth"></Navbar>
     <MainBody v-bind:windowWidth="windowWidth"></MainBody>
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
 import Navbar from './components/Navbar.vue'
-import MenuView from './components/MenuView.vue'
 import MainBody from './components/MainBody.vue'
 
 export default {
@@ -54,8 +53,17 @@ export default {
 
 <style>
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   border: 0;
+  z-index:0;
+}
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 </style>
