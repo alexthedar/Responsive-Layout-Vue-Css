@@ -1,6 +1,56 @@
 <template>
+  <div>
+  <!-- TODO: place mobile and desktop table into separate components or find a nicer way to make this mobile freindly -->
 
-  <div id="table" >
+  <!-- Desktop Table -->
+  <table v-if="!isMobile" class="table">
+    <thead>
+      <tr>
+        <th></th>
+  <!-- TODO: Make carets flip and click sorts table -->
+        <th ><abbr title="Name">Name<i class="fa fa-caret-up"></i></abbr></th>
+        <th><abbr title="Size">Size<i class="fa fa-caret-down"></i></abbr></th>
+        <th><abbr title="Date">Date<i class="fa fa-caret-down"></i></abbr></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(item, index) in data">
+        <td><span v-if="item.type==='folder'"><i class="fa fa-folder-o"></i></span>
+          <span v-else-if="item.type==='.doc'"><i class="fa fa-file-word-o"></i></span>
+          <span v-else-if="item.type==='.zip'"><i class="fa fa-file-archive-o"></i></span>
+          <span v-else="item.type==='img'">
+            <figure class="image is-24x24">
+              <img class="image-cropper" :src="item.img">
+            </figure>
+          </span>
+        </td>
+        <td>{{item.name}}</td>
+        <td class="size"><small>{{item.size}}</small></td>
+        <td>{{getDate(item.date)}}</td>
+
+        <!-- Desktop File Menu via ellipses -->
+        <td :index="index" @click="showFileMenu(index)" ><i  class="fa fa-ellipsis-v"></i>
+          <div v-if="show === parseInt(index)" class='file-menu'>
+            <div class="menu">
+              <ul class="menu-list">
+  <!-- TODO: Make Modal dynamic and respond to individual links -->
+                <li @click="showModal"><a >Rename</a></li>
+                <li @click="showModal"><a>Move</a></li>
+                <li @click="showModal"><a>Copy</a></li>
+                <li @click="showModal"><a>Comment</a></li>
+                <li @click="showModal"><a>Attach to Customer</a></li>
+                <li @click="showModal"><a>Delete</a></li>
+              </ul>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- End Desktop Table -->
+
+  <!-- Mobile Search -->
     <div v-if="isMobile" id="mobile-search">
       <p class="control has-icon has-icon-right">
         <input class="input is-medium" type="text" placeholder="Looking For">
@@ -9,6 +59,8 @@
         </span>
       </p>
     </div>
+
+    <!-- Mobile Table Header -->
     <div v-if="isMobile" class="tabs is-centered ">
       <ul @click="tabClicked">
         <li><a :id="1">Name</a></li>
@@ -16,30 +68,24 @@
         <li><a :id="3">Date</a></li>
       </ul>
     </div>
-    <table class="table ">
+
+    <!-- Mobile Table -->
+    <table v-if="isMobile" class="table ">
       <tbody>
         <tr v-for="(item, index) in data">
           <td >
-            <span v-if="item.type==='folder'">
-              <i class="fa fa-folder-o"></i>
-            </span>
-            <span v-else-if="item.type==='.doc'">
-              <i class="fa fa-file-word-o"></i>
-            </span>
-            <span v-else-if="item.type==='.zip'">
-              <i class="fa fa-file-archive-o"></i>
-            </span>
+            <span v-if="item.type==='folder'"><i class="fa fa-folder-o"></i></span>
+            <span v-else-if="item.type==='.doc'"><i class="fa fa-file-word-o"></i></span>
+            <span v-else-if="item.type==='.zip'"><i class="fa fa-file-archive-o"></i></span>
             <span v-else="item.type==='img'">
-              <figure class="image is-24x24">
-                <img class="image-cropper" :src="item.img">
-              </figure>
+              <figure class="image is-24x24"><img class="image-cropper" :src="item.img"></figure>
             </span>
           </td>
           <td class="has-text-left">{{item.name}}</td>
           <td v-if="parseInt(activeTab) === 2" class="size"><small>{{item.size}}</small></td>
           <td v-if="parseInt(activeTab) === 3">{{getDate(item.date)}}</td>
 
-          <!-- File Menu via ellipses -->
+          <!-- Mobile File Menu via ellipses -->
           <td :index="index" @click="showFileMenu(index)" ><i  class=" fa fa-ellipsis-v" ></i>
             <div v-if="show === index" class=''>
               <div class="menu">
@@ -54,19 +100,14 @@
                 </ul>
 <!-- TODO: Temp to disable modal on mobile -->
                 <ul v-else-if="isMobile" class="menu-list file-menu-mobile">
-                  <li>
-                    <span class="icon is-medium">
-                      <i class="fa fa-file-word-o"></i>
-                    </span>
-                    <div>
-                      File Name.doc
+                  <li class="mobile-file-menu-header">
+                    <div class="columns is-mobile">
+                      <div class="column is-3 icon is-medium "><i class="fa fa-file-word-o"></i></div>
+                      <div class="column mobile-file-menu-header-name">
+                        File Name.doc
+                        <p><small><i>box/customername/</i></small></p>
+                      </div>
                     </div>
-                    <div>
-                      <small>
-                        box/customername/
-                      </small>
-                    </div>
-
                   </li>
                   <li><a>Rename</a></li>
                   <li><a>Move</a></li>
@@ -81,7 +122,7 @@
         </tr>
       </tbody>
     </table>
-
+    <!-- End Mobile Table -->
 
     <!-- File Menu Modal Overlay -->
     <div class="modal " v-bind:class="{'is-active': isActive }">
@@ -93,9 +134,7 @@
           </header>
           <div class="card-content">
             <div class="content">
-              <p class="control">
-                <input class="input is-large" type="text" placeholder="Name">
-              </p>
+              <p class="control"><input class="input is-large" type="text" placeholder="Name"></p>
             </div>
           </div>
           <footer class="card-footer">
@@ -107,7 +146,7 @@
       </div>
     </div>
 
-  </div>
+  </div>  <!-- container div for template -->
 </template>
 
 <script>
@@ -218,6 +257,19 @@ tr:hover {
 
 .file-menu-mobile li {
   border-bottom: 1px solid #ccc;
+}
+
+.mobile-file-menu-header {
+  padding: 1.5em;
+}
+.mobile-file-menu-header .icon {
+  padding-top: .75em;;
+}
+.mobile-file-menu-header-name {
+}
+.mobile-file-menu-header-name p {
+  font-weight: 800;
+  color: #ccc;
 }
 
 </style>
