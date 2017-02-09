@@ -1,5 +1,5 @@
 <template>
-  <div id="table">
+  <div id="table" >
     <div class="facebook"> Facebook Content</div>
     <table class="table">
       <thead>
@@ -36,7 +36,7 @@
             <div v-if="show === parseInt(index)" class='file-menu'>
               <div class="menu">
                 <ul class="menu-list">
-                  <li><a>Rename</a></li>
+                  <li @click="showModal"><a >Rename</a></li>
                   <li><a>Move</a></li>
                   <li><a>Copy</a></li>
                   <li><a>Comment</a></li>
@@ -47,29 +47,45 @@
             </div>
           </td>
         </tr>
-
+      </tbody>
+      <div class="modal " v-bind:class="{'is-active': isActive }">
+        <div class="modal-content modal-input">
+          <div class="card">
+            <header class="card-header ">
+              <p class=" card-header-title">Rename Folder</p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                <p class="control">
+                  <input class="input is-large" type="text" placeholder="Name">
+                </p>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a class="is-success card-footer-item">CANCEL</a>
+              <a class="card-footer-item">RENAME</a>
+            </footer>
+            <button class="modal-close" @click="showModal"></button>
+          </div>
+        </div>
+      </div>
   </div>
-
 </template>
 
 <script>
 import data from '../assets/json/data.json'
 import moment from 'moment'
-import FileMenu from './FileMenu'
-// import MainBody from './components/MainBody'
-
 
 export default {
   name: 'table',
   props: ['windowWidth'],
   components: {
-    FileMenu
   },
   data() {
     return {
       data,
       show: '',
-      selected: 'Home',
+      isActive: false
     }
   },
   methods: {
@@ -78,7 +94,12 @@ export default {
     },
     showFileMenu(index){
       this.show === index? this.show = '' : this.show = index;
+    },
+    showModal(){
+      console.log(this.isActive)
+      this.isActive = !this.isActive
     }
+
   }
 }
 </script>
@@ -108,5 +129,15 @@ td {
   border: 1px solid #000;
   width: 15em;
   z-index: 1000;
+}
+.modal-input {
+  box-shadow: 1px 1px 10px 2px #ccc;
+  background: #fff;
+  width: 30%;
+}
+.modal-close {
+  background-color: gray;
+  top: 20%;
+  left: 65%;
 }
 </style>
