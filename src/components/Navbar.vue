@@ -69,9 +69,6 @@ export default {
     }
   },
   methods: {
-    showMenu () {
-      console.log('here')
-    },
     showMenu(){
       this.isActive = !this.isActive
     }
